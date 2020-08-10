@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="mario-chat">
+        <div id="chat-window">
+            <div id="output">
+    
+            </div>
+        </div>
+        <input type="text" id="handle" placeholder="Your Name">
+            <input type="text" id="message" placeholder="Message">
+                <button id="send" type="submit">Send</button>
+                <form>
+                    <div class="form-group">
+                      <label for="exampleFormControlFile1">Example file input</label>
+                      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                  </form>
+        </div>
+
+
+    <script src="/socket.io/socket.io.js">
+    </script>
+
+
+<script>
+    let socket = io.connect('http://localhost:2000')
+    let n = document.getElementById('handle')
+    let message = document.getElementById('message')
+    let output = document.getElementById('output')
+    let button = document.getElementById('send')
+    let button2 = document.getElementById('exampleFormControlFile1')
+    button.addEventListener('click', ()=>{
+        socket.emit('Chat Data', {
+            'message':message.value,
+            'name':n.value
+        })
+       message.value=""      
+    })
+    socket.on('Chat Data', (data)=>{
+        console.log(data.message)
+        output.innerHTML += '<p> <strong>'+data.name+': </strong> '+data.message+'</p>'
+       
+    })
+</script>
+</body>
+<style>
+ 
+</style>
+</html>
+
