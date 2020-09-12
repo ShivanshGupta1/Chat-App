@@ -1,7 +1,5 @@
 // const express = require('express')
 // const app = express()
-// const http = require('http')
-// const server = http.createServer(app)
 // const io = require('socket.io')(server)
 
 // app.get('/', function(req,res){
@@ -15,9 +13,12 @@
 //     })
 
 // })
-// server.listen(2000, ()=>{
+// app.listen(2000, ()=>{
 //   console.log('Running...')
 // })
+
+
+
 let express = require('express');
 let socket = require('socket.io');
 let app = express();
