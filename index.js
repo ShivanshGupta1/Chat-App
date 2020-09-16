@@ -18,11 +18,11 @@
 // })
 
 
-
+const port =process.env.PORT || 3000;
 let express = require('express');
 let socket = require('socket.io');
 let app = express();
-let server = app.listen(2000, () => {
+let server = app.listen(port, () => {
     console.log("server listening")
 })
 
